@@ -27140,6 +27140,7 @@ This is the "KIT" version, which has limited top masking for improved ease of as
 <part name="SUPPLY8" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="U$12" library="circuitects" deviceset="KALAM32-DEV" device=""/>
 <part name="U$13" library="circuitects" deviceset="PROTY_LOGO_WITH_TEXT" device=""/>
+<part name="U$3" library="circuitects" deviceset="VBAT" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -27397,6 +27398,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <instance part="SUPPLY8" gate="G$1" x="139.7" y="68.58"/>
 <instance part="U$5" gate="G$1" x="252.73" y="7.62"/>
 <instance part="LOGO2" gate="G$1" x="267.97" y="10.16"/>
+<instance part="U$3" gate="VBAT" x="142.24" y="71.12"/>
 </instances>
 <busses>
 </busses>
@@ -27858,7 +27860,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <label x="40.64" y="137.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="SS" class="0">
+<net name="CS/GPIO12" class="0">
 <segment>
 <pinref part="IOH" gate="A" pin="3"/>
 <wire x1="43.18" y1="50.8" x2="43.18" y2="60.96" width="0.1524" layer="91"/>
@@ -27870,11 +27872,18 @@ It must be pulled high to turn the ESP32 on.</text>
 <label x="187.96" y="127" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="39" class="0">
+<net name="ADC1:3/GPI39" class="0">
 <segment>
 <pinref part="U10" gate="G$1" pin="SENSOR_VN(GPI39/ADC1:3/RTC3)"/>
 <pinref part="C20" gate="G$1" pin="2"/>
 <wire x1="71.12" y1="132.08" x2="83.82" y2="132.08" width="0.1524" layer="91"/>
+<label x="78.74" y="132.08" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="AD" gate="A" pin="4"/>
+<wire x1="190.5" y1="45.72" x2="190.5" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="63.5" x2="180.34" y2="63.5" width="0.1524" layer="91"/>
+<label x="180.34" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="38" class="0">
@@ -27884,13 +27893,21 @@ It must be pulled high to turn the ESP32 on.</text>
 <wire x1="60.96" y1="134.62" x2="60.96" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="132.08" x2="63.5" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="134.62" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
+<label x="78.74" y="134.62" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="36" class="0">
+<net name="ADC1:0/GPI36" class="0">
 <segment>
 <pinref part="C19" gate="G$1" pin="2"/>
 <wire x1="71.12" y1="139.7" x2="83.82" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="SENSOR_VP(GPI36/ADC1:0/RTC0)"/>
+<label x="78.74" y="139.7" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="AD" gate="A" pin="3"/>
+<wire x1="187.96" y1="45.72" x2="187.96" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="60.96" x2="180.34" y2="60.96" width="0.1524" layer="91"/>
+<label x="180.34" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="37" class="0">
@@ -27900,6 +27917,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <wire x1="60.96" y1="139.7" x2="60.96" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="137.16" x2="83.82" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="SENSOR_CAPP(GPI37/ADC1:1/RTC1)"/>
+<label x="78.74" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CAP_10N" class="0">
@@ -27925,47 +27943,45 @@ It must be pulled high to turn the ESP32 on.</text>
 <wire x1="208.28" y1="124.46" x2="208.28" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="(GPIO15/ADC2:3/TOUCH3/RTC13/SPICSO/U0RTS)MTDO"/>
 <wire x1="185.42" y1="119.38" x2="208.28" y2="119.38" width="0.1524" layer="91"/>
-<label x="208.28" y="119.38" size="1.778" layer="95" xref="yes"/>
+<label x="208.28" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="AIN2" class="0">
+<net name="GP14" class="0">
 <segment>
 <wire x1="185.42" y1="121.92" x2="187.96" y2="121.92" width="0.1524" layer="91"/>
 <label x="187.96" y="121.92" size="1.27" layer="95" xref="yes"/>
 <pinref part="U10" gate="G$1" pin="(GPIO14/ADC2:6/TOUCH6/RTC16/SPICLK)MTMS"/>
 </segment>
 <segment>
-<pinref part="AD" gate="A" pin="2"/>
-<wire x1="185.42" y1="45.72" x2="185.42" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="185.42" y1="55.88" x2="175.26" y2="55.88" width="0.1524" layer="91"/>
-<label x="175.26" y="55.88" size="1.778" layer="95"/>
+<pinref part="IOL" gate="A" pin="2"/>
+<wire x1="88.9" y1="60.96" x2="88.9" y2="50.8" width="0.1524" layer="91"/>
+<label x="88.9" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="AIN0/34" class="0">
+<net name="ADC1:6/GPI34" class="0">
 <segment>
-<pinref part="AD" gate="A" pin="4"/>
-<wire x1="190.5" y1="45.72" x2="190.5" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="60.96" x2="175.26" y2="60.96" width="0.1524" layer="91"/>
-<label x="175.26" y="60.96" size="1.778" layer="95"/>
+<pinref part="AD" gate="A" pin="2"/>
+<wire x1="185.42" y1="58.42" x2="175.26" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="45.72" x2="185.42" y2="58.42" width="0.1524" layer="91"/>
+<label x="175.26" y="58.42" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <wire x1="83.82" y1="149.86" x2="78.74" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="VDET_1(GPI34/ADC1:6)"/>
-<label x="78.74" y="152.4" size="1.778" layer="95" rot="R180" xref="yes"/>
-<wire x1="78.74" y1="149.86" x2="78.74" y2="152.4" width="0.1524" layer="91"/>
+<label x="78.74" y="149.86" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIN1/35" class="0">
+<net name="ADC1:7/GPI35" class="0">
 <segment>
-<pinref part="AD" gate="A" pin="3"/>
-<wire x1="187.96" y1="45.72" x2="187.96" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="58.42" x2="175.26" y2="58.42" width="0.1524" layer="91"/>
-<label x="175.26" y="58.42" size="1.778" layer="95"/>
+<pinref part="AD" gate="A" pin="1"/>
+<wire x1="182.88" y1="55.88" x2="175.26" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="45.72" x2="182.88" y2="55.88" width="0.1524" layer="91"/>
+<label x="175.26" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <wire x1="83.82" y1="147.32" x2="78.74" y2="147.32" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="VDET_2(GPI35/ADC1:7)"/>
-<label x="78.74" y="147.32" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="78.74" y="147.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="FLASH_SWP" class="0">
@@ -28073,20 +28089,19 @@ It must be pulled high to turn the ESP32 on.</text>
 <label x="76.2" y="241.3" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIN3" class="0">
+<net name="GP27" class="0">
 <segment>
 <wire x1="185.42" y1="152.4" x2="187.96" y2="152.4" width="0.1524" layer="91"/>
 <label x="187.96" y="152.4" size="1.27" layer="95" xref="yes"/>
 <pinref part="U10" gate="G$1" pin="(ADC2:7/TOUCH7/RTC17)GPIO27"/>
 </segment>
 <segment>
-<pinref part="AD" gate="A" pin="1"/>
-<wire x1="182.88" y1="45.72" x2="182.88" y2="53.34" width="0.1524" layer="91"/>
-<label x="175.26" y="53.34" size="1.778" layer="95"/>
-<wire x1="182.88" y1="53.34" x2="175.26" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="IOL" gate="A" pin="1"/>
+<wire x1="91.44" y1="60.96" x2="91.44" y2="50.8" width="0.1524" layer="91"/>
+<label x="91.44" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="26" class="0">
+<net name="DAC2/GPIO26" class="0">
 <segment>
 <wire x1="185.42" y1="154.94" x2="187.96" y2="154.94" width="0.1524" layer="91"/>
 <label x="187.96" y="154.94" size="1.27" layer="95" xref="yes"/>
@@ -28095,10 +28110,10 @@ It must be pulled high to turn the ESP32 on.</text>
 <segment>
 <pinref part="IOL" gate="A" pin="7"/>
 <wire x1="76.2" y1="60.96" x2="76.2" y2="50.8" width="0.1524" layer="91"/>
-<label x="76.2" y="50.8" size="1.778" layer="95" rot="R270" xref="yes"/>
+<label x="76.2" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="MOSI" class="0">
+<net name="MOSI/GPIO23" class="0">
 <segment>
 <wire x1="185.42" y1="160.02" x2="187.96" y2="160.02" width="0.1524" layer="91"/>
 <label x="187.96" y="160.02" size="1.27" layer="95" xref="yes"/>
@@ -28115,7 +28130,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <label x="88.9" y="20.32" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="SCL" class="0">
+<net name="SCL/GPIO22" class="0">
 <segment>
 <wire x1="185.42" y1="162.56" x2="187.96" y2="162.56" width="0.1524" layer="91"/>
 <label x="187.96" y="162.56" size="1.27" layer="95" xref="yes"/>
@@ -28128,12 +28143,12 @@ It must be pulled high to turn the ESP32 on.</text>
 </segment>
 <segment>
 <pinref part="AD" gate="A" pin="6"/>
-<wire x1="195.58" y1="45.72" x2="195.58" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="195.58" y1="66.04" x2="175.26" y2="66.04" width="0.1524" layer="91"/>
-<label x="175.26" y="66.04" size="1.778" layer="95"/>
+<wire x1="195.58" y1="45.72" x2="195.58" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="68.58" x2="175.26" y2="68.58" width="0.1524" layer="91"/>
+<label x="175.26" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="SDA" class="0">
+<net name="SDA/GPIO21" class="0">
 <segment>
 <wire x1="185.42" y1="165.1" x2="187.96" y2="165.1" width="0.1524" layer="91"/>
 <label x="187.96" y="165.1" size="1.27" layer="95" xref="yes"/>
@@ -28146,12 +28161,12 @@ It must be pulled high to turn the ESP32 on.</text>
 </segment>
 <segment>
 <pinref part="AD" gate="A" pin="5"/>
-<wire x1="193.04" y1="45.72" x2="193.04" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="193.04" y1="63.5" x2="175.26" y2="63.5" width="0.1524" layer="91"/>
-<label x="175.26" y="63.5" size="1.778" layer="95"/>
+<wire x1="193.04" y1="45.72" x2="193.04" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="66.04" x2="175.26" y2="66.04" width="0.1524" layer="91"/>
+<label x="175.26" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="MISO" class="0">
+<net name="MISO/GPIO19" class="0">
 <segment>
 <wire x1="185.42" y1="170.18" x2="187.96" y2="170.18" width="0.1524" layer="91"/>
 <label x="187.96" y="170.18" size="1.27" layer="95" xref="yes"/>
@@ -28177,7 +28192,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <segment>
 <pinref part="IOL" gate="A" pin="6"/>
 <wire x1="78.74" y1="60.96" x2="78.74" y2="50.8" width="0.1524" layer="91"/>
-<label x="78.74" y="50.8" size="1.778" layer="95" rot="R270" xref="yes"/>
+<label x="78.74" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="5" class="0">
@@ -28199,7 +28214,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <wire x1="205.74" y1="193.04" x2="205.74" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="182.88" x2="185.42" y2="182.88" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="(ADC2:0/TOUCH0/RTC10/SPIHD)GPIO4"/>
-<label x="205.74" y="182.88" size="1.778" layer="95" xref="yes"/>
+<label x="205.74" y="182.88" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="2" class="0">
@@ -28211,7 +28226,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <segment>
 <pinref part="IOL" gate="A" pin="5"/>
 <wire x1="81.28" y1="60.96" x2="81.28" y2="50.8" width="0.1524" layer="91"/>
-<label x="81.28" y="50.8" size="1.778" layer="95" rot="R270" xref="yes"/>
+<label x="81.28" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="U0RXI" class="0">
@@ -28238,7 +28253,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <label x="361.95" y="167.64" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="25" class="0">
+<net name="DAC1/GPIO25" class="0">
 <segment>
 <wire x1="185.42" y1="157.48" x2="187.96" y2="157.48" width="0.1524" layer="91"/>
 <label x="187.96" y="157.48" size="1.27" layer="95" xref="yes"/>
@@ -28363,9 +28378,9 @@ It must be pulled high to turn the ESP32 on.</text>
 <pinref part="U10" gate="G$1" pin="(HS1_DATA5)GPIO17"/>
 </segment>
 <segment>
-<pinref part="IOH" gate="A" pin="2"/>
-<wire x1="45.72" y1="60.96" x2="45.72" y2="50.8" width="0.1524" layer="91"/>
-<label x="45.72" y="50.8" size="1.016" layer="95" rot="R270" xref="yes"/>
+<pinref part="IOL" gate="A" pin="8"/>
+<wire x1="73.66" y1="60.96" x2="73.66" y2="50.8" width="0.1524" layer="91"/>
+<label x="73.66" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="N$29" class="0">
@@ -28388,7 +28403,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <junction x="78.74" y="121.92"/>
 </segment>
 </net>
-<net name="SCK" class="0">
+<net name="SCK/GPIO18" class="0">
 <segment>
 <wire x1="185.42" y1="172.72" x2="187.96" y2="172.72" width="0.1524" layer="91"/>
 <label x="187.96" y="172.72" size="1.27" layer="95" xref="yes"/>
@@ -28475,6 +28490,7 @@ It must be pulled high to turn the ESP32 on.</text>
 <wire x1="285.75" y1="88.9" x2="285.75" y2="114.3" width="0.1524" layer="91"/>
 <junction x="285.75" y="114.3"/>
 <wire x1="279.4" y1="114.3" x2="267.97" y2="114.3" width="0.1524" layer="91"/>
+<label x="281.94" y="114.3" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="R16" gate="G$1" pin="1"/>
@@ -28620,6 +28636,11 @@ It must be pulled high to turn the ESP32 on.</text>
 <pinref part="U$7" gate="VBAT" pin="VBAT"/>
 <wire x1="287.02" y1="60.96" x2="287.02" y2="71.12" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="POWER" gate="A" pin="5"/>
+<wire x1="142.24" y1="45.72" x2="142.24" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="VBAT" pin="VBAT"/>
+</segment>
 </net>
 <net name="N$12" class="0">
 <segment>
@@ -28663,7 +28684,12 @@ It must be pulled high to turn the ESP32 on.</text>
 <pinref part="U1" gate="G$1" pin="EN"/>
 </segment>
 </net>
-<net name="WS2812/13" class="0">
+<net name="WS2812/GPIO13" class="0">
+<segment>
+<pinref part="IOL" gate="A" pin="3"/>
+<wire x1="86.36" y1="60.96" x2="86.36" y2="50.8" width="0.1524" layer="91"/>
+<label x="86.36" y="50.8" size="1.27" layer="95" rot="R270" xref="yes"/>
+</segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="254" y1="210.82" x2="246.38" y2="210.82" width="0.1524" layer="91"/>
@@ -28685,10 +28711,6 @@ It must be pulled high to turn the ESP32 on.</text>
 <approved hash="104,1,284.48,228.6,LED1,VDD,3.3V,,,"/>
 <approved hash="104,1,327.66,228.6,LED2,VDD,3.3V,,,"/>
 <approved hash="104,1,363.22,228.6,LED3,VDD,3.3V,,,"/>
-<approved hash="115,1,355.007,114.105,JP6,,,,,"/>
-<approved hash="115,1,252.73,10.2235,U$5,,,,,"/>
-<approved hash="115,1,193.571,130.071,FRAME4,,,,,"/>
-<approved hash="117,1,290.195,114.3,VUSB,,,,,"/>
 </errors>
 </schematic>
 </drawing>
